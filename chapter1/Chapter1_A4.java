@@ -20,6 +20,7 @@ public class Chapter1_A4 {
 			System.out.println("Password is incorrect.");
 		}
 		
+		scanner.close();
 	}
 
 }
