@@ -22,14 +22,16 @@ public class Chapter2_A5 {
 		int count = 0;
 
 		for (int i = 0; i < array.length; i++) {
-			if (hasEqualEvenAndOddDigits(array[i])) count++;
+			if (hasEqualEvenAndOddDigits(array[i]))
+				count++;
 		}
 
 		int[] equal = new int[count];
 		int index = 0;
 
 		for (int i = 0; i < array.length; i++) {
-			if (hasEqualEvenAndOddDigits(array[i])) equal[index++] = array[i];
+			if (hasEqualEvenAndOddDigits(array[i]))
+				equal[index++] = array[i];
 		}
 
 		return equal;
