@@ -7,8 +7,6 @@ import java.time.LocalDate;
  Факультет, Курс, Группа.
  */
 
-import java.util.Date;
-
 public class Student extends Entity {
 	private int id;
 	private String name;
@@ -43,8 +41,6 @@ public class Student extends Entity {
 	}
 
 	public String getName() {
-		// new Student(3,"John Smith", LocalDate.of(2009, 5, 8), "New Delhi",
-		// "125-14-18", "School of Engineering and Applied Sciences", 2, 12);
 		return name;
 	}
 

@@ -13,6 +13,7 @@ public class TestDataCreator {
 		Entity data[] = new Entity[30];
 
 		switch (entityType) {
+
 		case STUDENT:
 			data = createStudentArray();
 			break;
@@ -21,6 +22,39 @@ public class TestDataCreator {
 		}
 
 		return data;
+	}
+
+	public static Customer[] createCustomerArray() {
+		String idData = "{\"id\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]}";
+		String nameData = "{\"name\": [\"John Smith\", \"Emma Johnson\", \"Michael Williams\", \"Sarah Brown\", \"James Jones\", \"Emily Davis\", \"David Miller\", \"Jessica Wilson\", \"Robert Moore\", \"Jennifer Taylor\", \"William Anderson\", \"Linda Thomas\", \"Richard Jackson\", \"Patricia White\", \"Charles Harris\", \"Barbara Martin\", \"Thomas Thompson\", \"Elizabeth Garcia\", \"Christopher Martinez\", \"Susan Robinson\", \"Daniel Clark\", \"Karen Rodriguez\", \"Matthew Lewis\", \"Betty Lee\", \"Mark Walker\", \"Dorothy Hall\", \"Steven Allen\", \"Betty Young\", \"Edward Hernandez\", \"Margaret King\"]}";
+		String addressData = "{\"address\": [\"123 Main St, New York, NY 10001\", \"456 Oak Ave, Los Angeles, CA 90001\", \"789 Pine Rd, Chicago, IL 60601\", \"321 Elm St, Houston, TX 77001\", \"654 Maple Dr, Phoenix, AZ 85001\", \"987 Cedar Ln, Philadelphia, PA 19101\", \"147 Birch Blvd, San Antonio, TX 78201\", \"258 Walnut St, San Diego, CA 92101\", \"369 Spruce Ave, Dallas, TX 75201\", \"741 Cherry St, San Jose, CA 95101\", \"852 Poplar Rd, Austin, TX 78701\", \"963 Magnolia Ave, Jacksonville, FL 32201\", \"159 Willow Dr, Fort Worth, TX 76101\", \"753 Cypress Ln, Columbus, OH 43201\", \"486 Beech St, Charlotte, NC 28201\", \"357 Sycamore Ave, Detroit, MI 48201\", \"951 Hickory Rd, Memphis, TN 38101\", \"624 Redwood St, Baltimore, MD 21201\", \"738 Elmwood Ave, Boston, MA 02101\", \"284 Ash Ln, Seattle, WA 98101\", \"517 Pine St, Denver, CO 80201\", \"396 Maple Ave, Washington, DC 20001\", \"852 Oak St, Portland, OR 97201\", \"741 Cedar Dr, Las Vegas, NV 89101\", \"963 Birch Blvd, Nashville, TN 37201\", \"159 Spruce Ln, Oklahoma City, OK 73101\", \"357 Cherry Ave, New Orleans, LA 70101\", \"624 Walnut Rd, Louisville, KY 40201\", \"738 Magnolia St, Cleveland, OH 44101\", \"284 Willow Dr, Minneapolis, MN 55401\"]}";
+		String cardData = "{\"cardNum\": [\"4532 1234 5678 9012\", \"4912 3456 7890 1234\", \"5123 4567 8901 2345\", \"6011 2345 6789 0123\", \"3782 456789 01234\", \"4532 8901 2345 6789\", \"4912 8901 2345 6789\", \"5123 8901 2345 6789\", \"6011 8901 2345 6789\", \"3782 678901 23456\", \"4532 3456 7890 1234\", \"4912 3456 7890 5678\", \"5123 6789 0123 4567\", \"6011 5678 9012 3456\", \"3782 123456 78901\", \"4532 7890 1234 5678\", \"4912 7890 1234 5678\", \"5123 7890 1234 5678\", \"6011 7890 1234 5678\", \"3782 890123 45678\", \"4532 5678 9012 3456\", \"4912 5678 9012 3456\", \"5123 0123 4567 8901\", \"6011 0123 4567 8901\", \"3782 345678 90123\", \"4532 9012 3456 7890\", \"4912 9012 3456 7890\", \"5123 9012 3456 7890\", \"6011 9012 3456 7890\", \"3782 567890 12345\"]}";
+		String accountData = "{\"accountNum\": [\"100000000001\", \"100000000002\", \"100000000003\", \"100000000004\", \"100000000005\", \"100000000006\", \"100000000007\", \"100000000008\", \"100000000009\", \"100000000010\", \"100000000011\", \"100000000012\", \"100000000013\", \"100000000014\", \"100000000015\", \"100000000016\", \"100000000017\", \"100000000018\", \"100000000019\", \"100000000020\", \"100000000021\", \"100000000022\", \"100000000023\", \"100000000024\", \"100000000025\", \"100000000026\", \"100000000027\", \"100000000028\", \"100000000029\", \"100000000030\"]}";
+
+		JSONObject idObject = new JSONObject(idData);
+		JSONObject nameObject = new JSONObject(nameData);
+		JSONObject addressObject = new JSONObject(addressData);
+		JSONObject cardObject = new JSONObject(cardData);
+		JSONObject accountObject = new JSONObject(accountData);
+
+		JSONArray idArray = idObject.getJSONArray("id");
+		JSONArray nameArray = nameObject.getJSONArray("name");
+		JSONArray addressArray = addressObject.getJSONArray("address");
+		JSONArray cardArray = cardObject.getJSONArray("cardNum");
+		JSONArray accountArray = accountObject.getJSONArray("accountNum");
+
+		Customer[] customers = new Customer[30];
+
+		for (int i = 0; i < 30; i++) {
+			customers[i] = new Customer();
+			customers[i].setId(idArray.getInt(i));
+			customers[i].setName(nameArray.getString(i));
+			customers[i].setAddress(addressArray.getString(i));
+			customers[i].setCardNum(cardArray.getString(i));
+			customers[i].setAccountNum(accountArray.getString(i));
+		}
+
+		return customers;
 	}
 
 	private static Student[] createStudentArray() {
