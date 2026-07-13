@@ -24,6 +24,39 @@ public class TestDataCreator {
 		return data;
 	}
 
+	public static Patient[] createPatientArray() {
+		String nameData = "{\"name\": [\"John Smith\", \"Emma Johnson\", \"Michael Williams\", \"Sarah Brown\", \"James Jones\", \"Emily Davis\", \"David Miller\", \"Jessica Wilson\", \"Robert Moore\", \"Jennifer Taylor\", \"William Anderson\", \"Linda Thomas\", \"Richard Jackson\", \"Patricia White\", \"Charles Harris\", \"Barbara Martin\", \"Thomas Thompson\", \"Elizabeth Garcia\", \"Christopher Martinez\", \"Susan Robinson\", \"Daniel Clark\", \"Karen Rodriguez\", \"Matthew Lewis\", \"Betty Lee\", \"Mark Walker\", \"Dorothy Hall\", \"Steven Allen\", \"Betty Young\", \"Edward Hernandez\", \"Margaret King\"]}";
+		String addressData = "{\"address\": [\"123 Main St, New York, NY 10001\", \"456 Oak Ave, Los Angeles, CA 90001\", \"789 Pine Rd, Chicago, IL 60601\", \"321 Elm St, Houston, TX 77001\", \"654 Maple Dr, Phoenix, AZ 85001\", \"987 Cedar Ln, Philadelphia, PA 19101\", \"147 Birch Blvd, San Antonio, TX 78201\", \"258 Walnut St, San Diego, CA 92101\", \"369 Spruce Ave, Dallas, TX 75201\", \"741 Cherry St, San Jose, CA 95101\", \"852 Poplar Rd, Austin, TX 78701\", \"963 Magnolia Ave, Jacksonville, FL 32201\", \"159 Willow Dr, Fort Worth, TX 76101\", \"753 Cypress Ln, Columbus, OH 43201\", \"486 Beech St, Charlotte, NC 28201\", \"357 Sycamore Ave, Detroit, MI 48201\", \"951 Hickory Rd, Memphis, TN 38101\", \"624 Redwood St, Baltimore, MD 21201\", \"738 Elmwood Ave, Boston, MA 02101\", \"284 Ash Ln, Seattle, WA 98101\", \"517 Pine St, Denver, CO 80201\", \"396 Maple Ave, Washington, DC 20001\", \"852 Oak St, Portland, OR 97201\", \"741 Cedar Dr, Las Vegas, NV 89101\", \"963 Birch Blvd, Nashville, TN 37201\", \"159 Spruce Ln, Oklahoma City, OK 73101\", \"357 Cherry Ave, New Orleans, LA 70101\", \"624 Walnut Rd, Louisville, KY 40201\", \"738 Magnolia St, Cleveland, OH 44101\", \"284 Willow Dr, Minneapolis, MN 55401\"]}";
+		String phoneData = "{\"phone\": [\"+1 (212) 555-0101\", \"+1 (310) 555-0102\", \"+1 (312) 555-0103\", \"+1 (713) 555-0104\", \"+1 (602) 555-0105\", \"+1 (215) 555-0106\", \"+1 (210) 555-0107\", \"+1 (619) 555-0108\", \"+1 (214) 555-0109\", \"+1 (408) 555-0110\", \"+1 (512) 555-0111\", \"+1 (904) 555-0112\", \"+1 (817) 555-0113\", \"+1 (614) 555-0114\", \"+1 (704) 555-0115\", \"+1 (313) 555-0116\", \"+1 (901) 555-0117\", \"+1 (410) 555-0118\", \"+1 (617) 555-0119\", \"+1 (206) 555-0120\", \"+1 (303) 555-0121\", \"+1 (202) 555-0122\", \"+1 (503) 555-0123\", \"+1 (702) 555-0124\", \"+1 (615) 555-0125\", \"+1 (405) 555-0126\", \"+1 (504) 555-0127\", \"+1 (502) 555-0128\", \"+1 (216) 555-0129\", \"+1 (612) 555-0130\"]}";
+		String recordNumData = "{\"recordNum\": [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130]}";
+		String diagnosisData = "{\"diagnosis\": [\"Influenza\", \"Hypertension\", \"Diabetes Type 2\", \"Asthma\", \"Pneumonia\", \"Arthritis\", \"Migraine\", \"Influenza\", \"Hypertension\", \"Diabetes Type 2\", \"Asthma\", \"Pneumonia\", \"Arthritis\", \"Migraine\", \"Influenza\", \"Hypertension\", \"Diabetes Type 2\", \"Asthma\", \"Pneumonia\", \"Arthritis\", \"Migraine\", \"Influenza\", \"Hypertension\", \"Diabetes Type 2\", \"Asthma\", \"Pneumonia\", \"Arthritis\", \"Migraine\", \"Influenza\", \"Hypertension\"]}";
+
+		JSONObject nameObject = new JSONObject(nameData);
+		JSONObject addressObject = new JSONObject(addressData);
+		JSONObject phoneObject = new JSONObject(phoneData);
+		JSONObject recordNumObject = new JSONObject(recordNumData);
+		JSONObject diagnosisObject = new JSONObject(diagnosisData);
+
+		JSONArray nameArray = nameObject.getJSONArray("name");
+		JSONArray addressArray = addressObject.getJSONArray("address");
+		JSONArray phoneArray = phoneObject.getJSONArray("phone");
+		JSONArray recordNumArray = recordNumObject.getJSONArray("recordNum");
+		JSONArray diagnosisArray = diagnosisObject.getJSONArray("diagnosis");
+
+		Patient[] patients = new Patient[30];
+
+		for (int i = 0; i < 30; i++) {
+			patients[i] = new Patient();
+			patients[i].setName(nameArray.getString(i));
+			patients[i].setAddress(addressArray.getString(i));
+			patients[i].setPhone(phoneArray.getString(i));
+			patients[i].setRecordNum(recordNumArray.getInt(i));
+			patients[i].setDiagnosis(diagnosisArray.getString(i));
+		}
+		
+		return patients;
+	}
+
 	public static Customer[] createCustomerArray() {
 		String idData = "{\"id\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]}";
 		String nameData = "{\"name\": [\"John Smith\", \"Emma Johnson\", \"Michael Williams\", \"Sarah Brown\", \"James Jones\", \"Emily Davis\", \"David Miller\", \"Jessica Wilson\", \"Robert Moore\", \"Jennifer Taylor\", \"William Anderson\", \"Linda Thomas\", \"Richard Jackson\", \"Patricia White\", \"Charles Harris\", \"Barbara Martin\", \"Thomas Thompson\", \"Elizabeth Garcia\", \"Christopher Martinez\", \"Susan Robinson\", \"Daniel Clark\", \"Karen Rodriguez\", \"Matthew Lewis\", \"Betty Lee\", \"Mark Walker\", \"Dorothy Hall\", \"Steven Allen\", \"Betty Young\", \"Edward Hernandez\", \"Margaret King\"]}";
