@@ -1,8 +1,6 @@
-package chapter3A3;
+package chapter3.chapter3A3;
 
-import java.util.Arrays;
 import chapter3.TestDataCreator;
-import chapter3.Entity;
 import chapter3.Patient;
 
 /* 
@@ -38,11 +36,5 @@ public class Chapter3A3 {
 				System.out.println(patient);
 		}
 
-	}
-
-	private static void print(Entity[] entities) {
-		for (Entity entity : entities) {
-			System.out.println(entity);
-		}
 	}
 }
