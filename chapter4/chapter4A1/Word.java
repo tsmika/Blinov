@@ -1,49 +1,57 @@
 package chapter4.chapter4A1;
 
+import java.util.Objects;
+
 public class Word {
-	private String value;
-	private boolean isCapitalized;
-	private PunctuationMark mark;
+	private final String value;
+	private final PunctuationMark punctuationMark;
 
-	public Word() {
-		this.isCapitalized = false;
-		this.mark = PunctuationMark.NONE;
-	}
-
-	public Word(String value, boolean isCapitalized, PunctuationMark mark) {
-		this.value = value;
-		this.isCapitalized = isCapitalized;
-		this.mark = mark;
+	public Word(String value, PunctuationMark punctuationMark) {
+		this.value = Objects.requireNonNull(value);
+		this.punctuationMark = Objects.requireNonNull(punctuationMark);
 	}
 
 	public String getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public boolean getIsCapitalized() {
-		return isCapitalized;
-	}
-
-	public void setIsCapitalized(boolean isCapitalized) {
-		this.isCapitalized = isCapitalized;
-	}
-
 	public PunctuationMark getPunctuationMark() {
-		return this.mark;
+		return punctuationMark;
 	}
 
-	public PunctuationMark setPunctuationMark(PunctuationMark mark) {
-		return this.mark = mark;
+	public boolean isCapitalized() {
+		return !value.isEmpty() && Character.isUpperCase(value.charAt(0));
+	}
+
+	public String getText() {
+
+		if (punctuationMark == PunctuationMark.NONE) {
+			return value;
+		}
+
+		return value + punctuationMark.getCharacter();
+
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o)
+			return true;
+
+		if (!(o instanceof Word word))
+			return false;
+
+		return Objects.equals(value, word.value) && punctuationMark == word.punctuationMark;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value, punctuationMark);
 	}
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " [value=" + value + ", isCapitalized=" + isCapitalized + ", mark=" + mark
-				+ "]";
+		return getClass().getSimpleName() + " [value=" + value + ", punctuationMark=" + punctuationMark + "]";
 	}
-
 }
