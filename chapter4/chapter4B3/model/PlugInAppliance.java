@@ -3,8 +3,13 @@ package chapter4.chapter4B3.model;
 public abstract class PlugInAppliance extends ElectricalAppliance {
 	private final double voltage;
 
-	public PlugInAppliance(String name, double powerConsumption, double voltage) {
-		super(name, powerConsumption);
+	public PlugInAppliance() {
+		super();
+		this.voltage = 0.001;
+	}
+
+	public PlugInAppliance(String id, String name, double powerConsumption, double voltage) {
+		super(id, name, powerConsumption);
 
 		if (voltage <= 0) {
 			throw new IllegalArgumentException("Voltage must be positive!");

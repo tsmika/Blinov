@@ -4,14 +4,14 @@ public abstract class PortableDevice extends ElectricalAppliance {
 
 	private final double capacity;
 
-	public PortableDevice(String name, double powerConsumption, double capacity) {
-		super(name, powerConsumption);
+	public PortableDevice(String id, String name, double powerConsumption, double capacity) {
+		super(id, name, powerConsumption);
 
-		if (capacity > 0) {
-			this.capacity = capacity;
-		} else {
+		if (capacity <= 0) {
 			throw new IllegalArgumentException("Capacity must be positive!");
 		}
+
+		this.capacity = capacity;
 	}
 
 	public double getCapacity() {
