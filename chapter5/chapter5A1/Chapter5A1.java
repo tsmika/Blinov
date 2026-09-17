@@ -1,10 +1,10 @@
-package chapter5A1;
+package chapter5.chapter5A1;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import chapter5A1.Notepad.Note;
+import chapter5.chapter5A1.Notepad.Note;
 
 /*
 Создать класс Notepad с внутренним классом или классами, с помощью
